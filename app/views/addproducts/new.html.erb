@@ -1,10 +1,12 @@
+
 <h4 class="text-center mt-4 mb-4">Enter Product Details</h4>
 
-  <%= form_with model: @product do |form| %>
+  <%= form_with model: @prod do |form| %>
+
   <div class="row g-3">
     <div class="col-md-6">
-      <div><%= form.label :productName ,class:"form-label"%><br></div>
-      <div><%= form.text_field :prodcutName ,class:"form-control"%></div>
+      <div><%= form.label :name ,class:"form-label"%><br></div>
+      <div><%= form.text_field :name ,class:"form-control"%></div>
     </div>
     <div class="col-md-4">
       <div><%= form.label :price ,class:"form-label"%><br></div>
@@ -26,15 +28,19 @@
       <div><%= form.label :Quantity ,class:"form-label"%></div>
       <div><%= form.number_field :Quantity ,class:"form-control"%></div>
     </div>
-    <div class="col-md-6">
+    <%
+=begin%>
+ <div class="col-md-6">
       <div><%= form.label :uploadimage ,class:"form-label"%></div>
       <div><%= form.file_field :picture ,class:"form-control"%></div>
-    </div>
+    </div> 
+<%
+=end%>
   </div>
   <div>
     <div class="col-12">
-      <div class="form-label" ><%= form.submit %></div>
+      <div class="form-label" ><%=form.submit%></div>
     </div>
   </div>
-  <% end %>
+<% end %>
 
