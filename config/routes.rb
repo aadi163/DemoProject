@@ -1,11 +1,22 @@
 Rails.application.routes.draw do
+
   devise_for :users
+  
+  #userhome
   root 'homepage#index'
+
+  #sellerhome
   get 'sellerhome' => "sellerhomepage#index"
   get 'sellerproductlist' => "sellerhomepage#productlist"
 
+  #adminhome
+  get 'adminhome' => "adminhomepage#index"
+  
+  #category
+  get 'categorylist' => "categories#categorylist"
 
-  resources :addproducts
+  resources :categories
+  resources :products
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -16,3 +27,4 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 end
+

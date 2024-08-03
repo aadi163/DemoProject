@@ -1,0 +1,25 @@
+<%= render "adminhomepage/adminnavbar" %>
+
+<h1 class="text-center mt-4 mb-4">Categories List</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Categories</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.name %></td>
+      <td>
+      <%= link_to "edit", edit_category_path(category), class:"btn btn-primary" %>
+      <%= link_to "Delete", category_path(category), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+      },class:"btn btn-danger" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

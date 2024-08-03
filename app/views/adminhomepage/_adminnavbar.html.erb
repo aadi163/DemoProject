@@ -10,18 +10,11 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Start Selling</a>
+        <%= link_to "Manage Category", new_category_path , class:"nav-link" %>
         </li>
         <li class="nav-item">
-        <%= link_to "create product", new_addproduct_path , class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Orders</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-        <li class="nav-item">    
+        <%= link_to "show Categories", categorylist_path , class:"nav-link" %>
+        </li> 
       </ul>
     </div>   
       <%= link_to "Sign Up", new_user_registration_path ,class:"btn btn-primary" %>
