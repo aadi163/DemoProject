@@ -35,7 +35,7 @@ class CategoriesController < ApplicationController
       redirect_to categorylist_path
     end
   end
-  
+
   private
   
   def category_params

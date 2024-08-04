@@ -1,22 +1,24 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  
-  #userhome
+
+  #userhome routes
   root 'homepage#index'
 
-  #sellerhome
+  #sellerhome routes
   get 'sellerhome' => "sellerhomepage#index"
   get 'sellerproductlist' => "sellerhomepage#productlist"
 
-  #adminhome
+  #adminhome routes
   get 'adminhome' => "adminhomepage#index"
   
-  #category
+  #category routes
   get 'categorylist' => "categories#categorylist"
 
   resources :categories
   resources :products
+  resources :subcategories
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

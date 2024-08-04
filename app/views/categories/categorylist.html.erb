@@ -5,13 +5,38 @@
   <thead>
     <tr>
       <th>Categories</th>
+      <th>Add sub categories</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @categories.each do |category| %>
     <tr>
-      <td><%= category.name %></td>
+      <td>
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+        <th><%= category.name %></th>
+        <th></th>
+        </tr>
+        </thead>
+        <tbody>
+          <%category.subcategories.each do |subcat|%>
+          <tr>
+            <td><li><%= subcat.name %></li></td>
+            <td>
+            <%= link_to "edit", edit_subcategory_path(subcat), class:"btn " %>
+            <%= link_to "Delete", subcategory_path(subcat), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+            },class:"btn btn-dange" %>
+            </td>
+          </tr>
+          <%end%>
+        </tbody>
+      </table>
+      </td>
+      <td><%= link_to "add sub-categories", new_subcategory_path(category), class:"btn btn-primary" %></td>
       <td>
       <%= link_to "edit", edit_category_path(category), class:"btn btn-primary" %>
       <%= link_to "Delete", category_path(category), data: {
