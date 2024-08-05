@@ -1,0 +1,15 @@
+<div class="container" style="padding-left: 50px;">
+<div class="row">
+<% products.each do |p| %>
+<div class="card" style="width: 15rem; margin-left: 20px; margin-top: 20px;">
+  <img src="p.product_image" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><%= p.name %></h5>
+    <h6 class="card-title">Price : <%= p.price%></h6>
+    <p class="card-text">Some quick example text to build on the card title</p>
+    <a href="#" class="btn btn-primary">Buy Now</a>
+  </div>
+</div>
+<%end%>
+</div>
+</div>

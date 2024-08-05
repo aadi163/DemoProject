@@ -1,20 +1,40 @@
-<h1 class="text-center mt-4 mb-4">Products List</h1>
+<%= render "sellernavbar" %>
+
+<h4 class="text-center mt-4 mb-4">Products List</h4>
 <table class="table table-bordered">
   <thead>
     <tr>
+      <th>Image</th>
       <th>Product</th>
       <th>Price</th>
       <th>Category</th>
+      <th>Quantity</th>
+      <th>Description</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
+  
     <% @products.each do |p| %>
     <tr>
+      <td>
+
+<%
+=begin%>
+ <%= link_to main_app.rails_blob_url(p&.product_image&.first&.attachments&.first), target: "_blank" do %>
+        <%= image_tag main_app.rails_blob_url(p&.product_image&.first&.attachments&.first), class: 'img-thumbnail' %>
+      <% end %> 
+<% 
+<%
+=end%>
+      <%= p.product_image %>
+      </td>
       <td><%= p.name %></td>
       <td><%= p.price %></td> 
-      <td><%= p.category %></td> 
-      <td><%= p.discription %></td> 
+      <td><%= p.subcategory.name %></td>
+      <td><%= p.quantity %></td> 
+      <td><%= p.description %></td> 
+      <td><%= link_to "edit", edit_product_path(p) %></td>
     </tr>
     <% end %>
   </tbody>

@@ -11,13 +11,7 @@
     <div class="col-md-4">
       <div><%= form.label :category ,class:"form-label"%></div>
       <div class="form-control">
-      <%= form.select :category,
-      {
-        "Fashion" => [ ["Mens"],["Womens"],["Kids"]],
-        "Electronics" => [ ["LED tv"], ["AC"], ["Cooler"] ],
-        "Mobiles" => [ ["Redmi"], ["Oppo"], ["Samsung"] ],
-      }
-      %>
+      <%= form.select :subcategory_id, Subcategory.order(:id).map {|sc| [sc.name , sc.id]}%>
       </div>
     </div> 
     <div class="col-md-4">
@@ -27,6 +21,10 @@
     <div class="col-md-4">
       <div><%= form.label :description ,class:"form-label"%></div>
       <div><%= form.text_field :description ,class:"form-control"%></div>
+    </div>
+    <div class="col-md-4">
+      <div><%= form.label :image ,class:"form-label"%></div>
+      <div><%= form.file_field :product_image ,class:"form-control"%></div>
     </div>
   <div>
     <div class="col-12">
