@@ -17,17 +17,8 @@
   
     <% @products.each do |p| %>
     <tr>
-      <td>
-
-<%
-=begin%>
- <%= link_to main_app.rails_blob_url(p&.product_image&.first&.attachments&.first), target: "_blank" do %>
-        <%= image_tag main_app.rails_blob_url(p&.product_image&.first&.attachments&.first), class: 'img-thumbnail' %>
-      <% end %> 
-<% 
-<%
-=end%>
-      <%= p.product_image %>
+      <td >
+      <%= image_tag url_for(p.product_image) ,style: "width:50px; height:50px" if p.product_image.attached? %>
       </td>
       <td><%= p.name %></td>
       <td><%= p.price %></td> 

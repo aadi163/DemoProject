@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   #userhome routes
   root 'homepage#index'
+  get 'homepage' => "homepage#index"
 
   #sellerhome routes
   get 'sellerhome' => "sellerhomepage#index"
@@ -15,9 +16,23 @@ Rails.application.routes.draw do
   #category routes
   get 'categorylist' => "categories#categorylist"
 
+  #carts routes
+  #get 'addtocart' => "carts#addtocart"
+  post '/cartdataitems/:id/addtocart/', to: 'cartdataitems#addtocart', as: 'addtocart'
+  get 'cartindex' => "carts#index"
+
+  # post 'cartcreate' => "carts#create"
+
   resources :categories
-  resources :products
   resources :subcategories
+  resources :products 
+  resources :carts
+  resources :useraddresses
+  resources :cartdataitems , only:[:cartdataitems]
+  
+
+
+
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

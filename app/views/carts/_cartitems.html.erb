@@ -1,0 +1,16 @@
+<% cartitems.each do |itm|%>
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+    <%= image_tag url_for(itm.product.product_image) ,style:"width:230px; height:200px; margin:10px 0px 10px 0px;", class:"img-fluid rounded-start" if itm.product.product_image.attached? %> 
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%=itm.product.name%>: <%=itm.product.subcategory.name%></h5>
+        <h6 class="card-title">Price : <%= itm.product.price %></h6>
+        <p class="card-text"><%= itm.product.description %></p>
+      </div>
+    </div>
+  </div>
+</div>
+<%end%>

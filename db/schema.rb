@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_05_065836) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_08_181832) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,40 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_05_065836) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "cart_items", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "cart_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["product_id"], name: "index_cart_items_on_product_id"
+  end
+
+  create_table "cartdataitems", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "cart_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cartdataitems_on_cart_id"
+    t.index ["product_id"], name: "index_cartdataitems_on_product_id"
+  end
+
+  create_table "cartitems", force: :cascade do |t|
+    t.bigint "products_id", null: false
+    t.bigint "carts_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["carts_id"], name: "index_cartitems_on_carts_id"
+    t.index ["products_id"], name: "index_cartitems_on_products_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -67,6 +101,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_05_065836) do
     t.index ["category_id"], name: "index_subcategories_on_category_id"
   end
 
+  create_table "useraddresses", force: :cascade do |t|
+    t.string "name"
+    t.integer "phonenumber"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.integer "pincode"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_useraddresses_on_user_id"
+  end
+
+  create_table "usercarts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -81,6 +133,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_05_065836) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cart_items", "carts"
+  add_foreign_key "cart_items", "products"
+  add_foreign_key "cartdataitems", "carts"
+  add_foreign_key "cartdataitems", "products"
+  add_foreign_key "cartitems", "carts", column: "carts_id"
+  add_foreign_key "cartitems", "products", column: "products_id"
+  add_foreign_key "carts", "users"
   add_foreign_key "products", "subcategories"
   add_foreign_key "subcategories", "categories"
+  add_foreign_key "useraddresses", "users"
 end

@@ -1,0 +1,12 @@
+<% useraddresses.each do |add|%>
+<div class="card border-info mb-3" style="max-width: 35rem;">
+  <div class="card-header"></div>
+  <div class="card-body">
+    <p class="card-title">Name : <%=add.name%></p>
+    <p class="card-title">Contact No. : <%=add.phonenumber%></p>
+    <P class="card-title">Address : <%=add.address%> , <%=add.city%> , <%=add.state%></p>
+    <p class="card-text">pincode : <%=add.pincode%></p>
+    <button class="btn btn-success"> order-here </button>
+  </div>
+</div>
+<%end%>

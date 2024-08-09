@@ -1,12 +1,13 @@
 <div class="container" style="padding-left: 50px;">
 <div class="row">
 <% products.each do |p| %>
-<div class="card" style="width: 15rem; margin-left: 20px; margin-top: 20px;">
-  <img src="p.product_image" class="card-img-top" alt="...">
+<div class="card" style="width: 16rem; margin-left: 10px; margin-top: 20px;">
+  <a href="<%=product_path(p)%>">
+  <%= image_tag url_for(p.product_image) ,style: "width:230px; height:240px; margin-top:10px;" , class:"card-img-top" if p.product_image.attached? %>
+  </a>
   <div class="card-body">
-    <h5 class="card-title"><%= p.name %></h5>
-    <h6 class="card-title">Price : <%= p.price%></h6>
-    <p class="card-text">Some quick example text to build on the card title</p>
+    <h6 class="card-title">Price : <%= p.price %></h6>
+    <p class="card-text" style="font-size:10px; margin:10px;"> <%= p.description %> </p>
     <a href="#" class="btn btn-primary">Buy Now</a>
   </div>
 </div>
