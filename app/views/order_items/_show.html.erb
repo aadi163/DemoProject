@@ -1,0 +1,13 @@
+<div class="card" style="width: 15rem;">
+  <%= image_tag url_for(product.product_image) , style:"width:220px; height:200px; margin:10px 10px 10px 10px;", class:"img-fluid rounded-start" if product.product_image.attached? %>
+  <div class="card-body">
+    <h6 class="card-title"><%= product.name %></h6>
+    <h6 class="card-title">Price : <%= product.price %></h6>
+    <% dlch = 50 %>
+    <h6 class="card-title">Delivery Charges : <%=dlch%></h6>
+    <hr>
+    <h5 class="card-title">Total Price : <%= dlch + product.price %></h5>
+    <hr>
+    <a href="#" class="btn btn-primary">Pay now</a>
+  </div>
+</div>

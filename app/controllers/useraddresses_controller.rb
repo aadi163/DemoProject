@@ -1,5 +1,5 @@
 class UseraddressesController < ApplicationController
-before_action :find_product
+#before_action :find_product
 
   def index
     @useraddresses = Useraddress.all
@@ -7,13 +7,12 @@ before_action :find_product
 
   def new
     @useraddress = Useraddress.new
-    @useraddresses = Useraddress.all
   end
 
   def create
     @useraddress = Useraddress.new(useraddress_params)
     if @useraddress.save
-      redirect_to new_useraddress_path
+      redirect_to  orderitem_path
     else
       render :new
     end
@@ -26,11 +25,19 @@ before_action :find_product
   def update
     @useraddress = Useraddress.find(params[:id])
     if @useraddress.update(useraddress_params)
-      redirect_to useraddresses_path
+      redirect_to orderitem_path
     else
       render :edit
     end
   end
+
+  def destroy
+    @useraddress = Useraddress.find(params[:id])
+    if @useraddress.destroy
+      redirect_to order_item_path
+    end
+  end
+
 
   private
   
@@ -38,9 +45,9 @@ before_action :find_product
     params.require(:useraddress).permit(:name, :phonenumber, :address , :city, :state , :pincode ,:user_id)
   end
 
-  def find_product
-    @product = Product.find_by(params[:id])
-  end
+  # def find_product
+  #   @product = Product.find(params[:id])
+  # end
 
 
 end

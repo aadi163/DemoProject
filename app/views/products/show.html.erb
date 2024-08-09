@@ -7,7 +7,7 @@
     <div class="col-md-4">
       <%= image_tag url_for(@product.product_image) ,style:"width:330px; height:300px; margin:10px 0px 10px 0px;", class:"img-fluid rounded-start" if @product.product_image.attached? %> 
       <span>
-      <%= link_to "Buy now", new_useraddress_path(@product) , class:"btn btn-primary w-50" %>
+      <%= link_to "Buy now", order_item_path(@product) , class:"btn btn-primary w-50" %>
       </span>
       <span style="float:left; margin-right:10px">
       <%= button_to "Add to cart", addtocart_path(@product) , class:"btn btn-outline-primary w-100", method: :post %>

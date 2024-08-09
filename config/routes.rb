@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   #get 'addtocart' => "carts#addtocart"
   post '/cartdataitems/:id/addtocart/', to: 'cartdataitems#addtocart', as: 'addtocart'
   get 'cartindex' => "carts#index"
+  get 'orderitem' => "order_items#show"
 
   # post 'cartcreate' => "carts#create"
 
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :useraddresses
   resources :cartdataitems , only:[:cartdataitems]
+  resources :order_items
   
 
 
