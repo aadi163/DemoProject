@@ -1,4 +1,5 @@
 class CartdataitemsController < ApplicationController
+  before_action :require_login , only: [:addtocart]
 
   def addtocart
     @cart = current_user.cart || current_user.create_cart
@@ -11,4 +12,18 @@ class CartdataitemsController < ApplicationController
       redirect_to product_path
     end
   end
+
+  def destroy
+    @cartitem = Cartdataitem.find(params[:id])
+    if @cartitem.destroy
+      redirect_to carts_path
+    end
+  end
+
+  private
+    def require_login
+      if !user_signed_in?
+        redirect_to new_user_registration_path 
+      end
+    end
 end

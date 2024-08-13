@@ -12,7 +12,7 @@ class UseraddressesController < ApplicationController
   def create
     @useraddress = Useraddress.new(useraddress_params)
     if @useraddress.save
-      redirect_to  orderitem_path
+      redirect_to order_item_path
     else
       render :new
     end
@@ -25,7 +25,7 @@ class UseraddressesController < ApplicationController
   def update
     @useraddress = Useraddress.find(params[:id])
     if @useraddress.update(useraddress_params)
-      redirect_to orderitem_path
+      redirect_to order_item_path
     else
       render :edit
     end

@@ -17,20 +17,24 @@ Rails.application.routes.draw do
   get 'categorylist' => "categories#categorylist"
 
   #carts routes
-  #get 'addtocart' => "carts#addtocart"
   post '/cartdataitems/:id/addtocart/', to: 'cartdataitems#addtocart', as: 'addtocart'
   get 'cartindex' => "carts#index"
-  get 'orderitem' => "order_items#show"
 
-  # post 'cartcreate' => "carts#create"
+  #order routes
+  get  '/order_items/:id/finalorder' , to: 'order_items#finalorder' , as: 'finalorder'
+  get  '/order_items/:id/selectaddress' , to: 'order_items#selectaddress' , as: 'selectaddress'
+  post '/order_items/:id/orderitem' , to: 'order_items#orderitem' , as: 'orderitem'
+
+  
 
   resources :categories
   resources :subcategories
   resources :products 
   resources :carts
   resources :useraddresses
-  resources :cartdataitems , only:[:cartdataitems]
+  resources :cartdataitems 
   resources :order_items
+  resources :orders
   
 
 

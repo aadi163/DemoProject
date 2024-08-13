@@ -1,8 +1,11 @@
+<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+<div class="ro" style="float:left">
+<% @price = 0 %>
 <% cartitems.each do |itm|%>
-<div class="card mb-3" style="max-width: 540px;">
+<div class="card mb-8" style="max-width: 700px; margin:20px">
   <div class="row g-0">
-    <div class="col-md-4">
-    <%= image_tag url_for(itm.product.product_image) ,style:"width:230px; height:200px; margin:10px 0px 10px 0px;", class:"img-fluid rounded-start" if itm.product.product_image.attached? %> 
+    <div class="col-md-3">
+    <%= image_tag url_for(itm.product.product_image) ,style:"width:230px; height:200px; margin:0px 0px 0px 0px;", class:"img-fluid rounded-start" if itm.product.product_image.attached? %> 
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -11,6 +14,27 @@
         <p class="card-text"><%= itm.product.description %></p>
       </div>
     </div>
+    <%= link_to "Remove", cartdataitem_path(itm), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+            },class:"btn btn-dange" %>
   </div>
 </div>
+<% @price = @price + itm.product.price %>
 <%end%>
+</div>
+
+<div class="card text-bg-inf mb-3" style="max-width: 100rem; eight: 400px; margin:20px">
+  <h6 class="card-header">Price Details</h6>
+  <div class="card-body" style="">
+    <% dc = 120 %>
+    <h5 class="card-title">Total Price : <%= @price %> </>
+    <h5 class="card-title">Delevery Charges : <%= dc %> </h5>
+    <hr>
+    <h4 class="card-text" style="float:left;">Total Amount : <%= @price + dc %> </h4>
+    <div class="d-flex justify-content-end">
+    <button class="btn btn-primary " type="submit">Place Order</button>
+    </div>
+    <hr>
+  </div>
+</div>

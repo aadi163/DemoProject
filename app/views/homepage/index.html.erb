@@ -1,8 +1,15 @@
 <%= render "navbar" %>
-<% if user_signed_in? %>
+<%
+=begin%>
+ <% if user_signed_in? %> 
+<%
+=end%>
 <%= render "categorynavbar" , categories: @categories %>
 <%= render "carousal" %>
 <%= render "productcart" , products: @products%>
-<%end%>
-
+<%
+=begin%>
+ <%end%> 
+<%
+=end%>
 

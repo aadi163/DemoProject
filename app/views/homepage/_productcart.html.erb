@@ -1,9 +1,9 @@
-<div class="container" style="padding-left: 50px;">
+<div class="containr" style="margin: 10px ; background-image: url(https://img.freepik.com/free-vector/indian-tricolor-theme-watercolor-texture-background-vector_1055-11999.jpg?w=996&t=st=1723440930~exp=1723441530~hmac=3b4df94ee0a080321b1747435b983a17661150b88f91aae9bbc59ee0ba302743); heigth:100%; width:100%;">
 <div class="row">
 <% products.each do |p| %>
-<div class="card" style="width: 16rem; margin-left: 10px; margin-top: 20px;">
+<div class="card" style="width: 18rem; margin: 7px;">
   <a href="<%=product_path(p)%>">
-  <%= image_tag url_for(p.product_image) ,style: "width:230px; height:240px; margin-top:10px;" , class:"card-img-top" if p.product_image.attached? %>
+  <%= image_tag url_for(p.product_image) ,style: "width:260px; height:260px; margin-top:10px;" , class:"card-img-top" if p.product_image.attached? %>
   </a>
   <div class="card-body">
     <h6 class="card-title">Price : <%= p.price %></h6>

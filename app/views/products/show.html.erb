@@ -2,15 +2,15 @@
 <div class="justify-content-between">
 <div class="container" style="padding-left: 150px;">
 <div class="row">
-<div class="card mb-3" style="max-width: 800px;">
+<div class="card mb-8" style="max-width: 1000px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <%= image_tag url_for(@product.product_image) ,style:"width:330px; height:300px; margin:10px 0px 10px 0px;", class:"img-fluid rounded-start" if @product.product_image.attached? %> 
+      <%= image_tag url_for(@product.product_image) ,style:"width:350px; height:400px; margin:10px 0px 10px 0px;", class:"img-fluid rounded-start" if @product.product_image.attached? %> 
       <span>
-      <%= link_to "Buy now", order_item_path(@product) , class:"btn btn-primary w-50" %>
+      <%= link_to "Buy now", finalorder_path(@product) , class:"btn btn-primary w-50" %>
       </span>
-      <span style="float:left; margin-right:10px">
-      <%= button_to "Add to cart", addtocart_path(@product) , class:"btn btn-outline-primary w-100", method: :post %>
+      <span style="float:left; margin:0px 10px 10px 0px;">
+      <%= button_to "Add to cart", addtocart_path(@product) , class:"btn btn-outline-primary w-120", method: :post %>
       </span>
     </div>
     <div class="col-md-8">
@@ -23,7 +23,6 @@
         <p>Bank Offer10% off up to ₹1,000 on ICICI Bank Debit Card Transactions, on orders of ₹5,000 and aboveT&C</P>
         <p>Bank Offer12% off up to ₹1,800 on ICICI Bank Debit Card EMI Transactions, on orders of ₹7,000 and aboveT&C</p>
         </div>
-        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
       </div>
     </div>
   </div>
