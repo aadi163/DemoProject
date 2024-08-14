@@ -1,10 +1,12 @@
 class ProductsController < ApplicationController
+  before_action :find_id , only: [:show , :edit , :update , :destroy]
+
   def new
     @product = Product.new
   end
 
   def show
-    @product = Product.find(params[:id])
+    # @product = Product.find(params[:id])
   end
 
   def create
@@ -17,20 +19,31 @@ class ProductsController < ApplicationController
   end
   
   def edit
-    @product = Product.find(params[:id])
+    # @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
+    # @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to sellerproductlist_path
     else
       render :new
     end
   end
+
+  def destroy
+    if @product.destroy
+      redirect_to sellerproductlist_path
+    end
+  end
+
   private
   
   def product_params
     params.require(:product).permit(:name, :price, :subcategory_id , :description, :quantity ,:product_image)
+  end
+
+  def find_id
+    @product = Product.find(params[:id])
   end
 end
