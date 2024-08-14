@@ -1,15 +1,11 @@
-<%= render "navbar" %>
-<%
-=begin%>
- <% if user_signed_in? %> 
-<%
-=end%>
-<%= render "categorynavbar" , categories: @categories %>
-<%= render "carousal" %>
-<%= render "productcart" , products: @products%>
-<%
-=begin%>
- <%end%> 
-<%
-=end%>
+
+  <div lass="position-fixed">
+  <%= render "navbar" %>
+  </div>
+  <div lass="position-sticky top-0">
+  <%= render "categorynavbar" , categories: @categories %>
+  </div>
+  <%= render "carousal" %>
+  <%= render "productcart" , products: @products%>
+
 

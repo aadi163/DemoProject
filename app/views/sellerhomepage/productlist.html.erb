@@ -25,7 +25,12 @@
       <td><%= p.subcategory.name %></td>
       <td><%= p.quantity %></td> 
       <td><%= p.description %></td> 
-      <td><%= link_to "edit", edit_product_path(p) %></td>
+      <td><%= link_to "edit", edit_product_path(p) %>
+      <%= link_to "Delete", product_path(p), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+      },class:"btn btn-danger" %>
+      </td>
     </tr>
     <% end %>
   </tbody>
