@@ -1,0 +1,20 @@
+<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+<div class="ro" style="float:left">
+<% wishlistitems.each do |itm|%>
+<div class="card mb-8" style="max-width: 700px; margin:20px">
+  <div class="row g-0">
+    <div class="col-md-3">
+    <%= image_tag url_for(itm.product.product_image) ,style:"width:230px; height:200px; margin:0px 0px 0px 0px;", class:"img-fluid rounded-start" if itm.product.product_image.attached? %> 
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%=itm.product.name%>: <%=itm.product.subcategory.name%></h5>
+        <h6 class="card-title">Price : <%= itm.product.price %></h6>
+        <p class="card-text"><%= itm.product.description %></p>
+      </div>
+    </div>
+  </div>
+</div>
+<%end%>
+</div>
+

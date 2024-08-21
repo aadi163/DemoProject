@@ -26,11 +26,10 @@ Rails.application.routes.draw do
   get  '/order_items/:id/selectaddress' , to: 'order_items#selectaddress' , as: 'selectaddress'
   post '/order_items/:id/orderitem' , to: 'order_items#orderitem' , as: 'orderitem'
 
-  #wishlistt routes
+  #wishlist routes
   post '/wishlist_items/:id/addtowishlist' , to: 'wishlist_items#addtowishlist' , as: 'addtowishlist'
 
   
-
   resources :categories
   resources :subcategories
   resources :products 
@@ -40,6 +39,8 @@ Rails.application.routes.draw do
   resources :order_items
   resources :orders
   resources :wishlist_items
+  resources :wishlists
+
   
 
 
