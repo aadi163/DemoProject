@@ -1,0 +1,32 @@
+<%= render "homepage/navbar" %>
+<div class="text-center"><h1>My orders</h1></div>
+<div class="mt-5">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Address</th>
+      <th scope="col">Action</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @orders.each do |od|%>
+    <tr>
+      <td>
+        <%= image_tag url_for(od.product.product_image) ,style:"width:150px; height:150px; margin:0px 0px 0px 0px;", class:"img-fluid rounded-start" if od.product.product_image.attached? %>
+      </td>
+      <td><%=od.product.name%></td>
+      <td><%=od.product.price%></td>
+      <td><%=od.useraddress.address%> , <%=od.useraddress.city%> , <%=od.useraddress.state%></td>
+      <td><%= link_to "Cancel-Order", order_item_path(od), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+            },class:"btn btn-danger" %></td>
+      <td>delivered</td>
+    </tr>
+  <%end%>
+  </tbody>
+</table>

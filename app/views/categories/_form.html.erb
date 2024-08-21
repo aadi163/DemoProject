@@ -1,0 +1,12 @@
+<%= form_with model: category do |form| %>
+  <div class="row g-3 ">
+    <div class="col-md-6">
+      <div><%= form.label :name ,class:"form-label"%><br></div>
+      <div><%= form.text_field :name ,class:"form-control"%></div>
+    </div>
+    <div class="col-12">
+      <div class="form-label"><%=form.submit class:"btn btn-primary"%></div>
+    </div>
+  </div>
+<% end %>
+

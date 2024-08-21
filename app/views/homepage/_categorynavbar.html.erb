@@ -1,0 +1,14 @@
+<div class="">
+<ul class="nav nav-pills" style="background-color: rgb(198, 203, 212); margin-bottom: 20px;    box-shadow: inset 1px 1px 10px 5px rgb(170, 176, 176);">
+  <% categories.each do |cat|%>
+  <li class="nav-item dropdown" >
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: black;"><%= cat.name %></a>
+    <ul class="dropdown-menu">
+      <% cat.subcategories.each do |subcat| %>
+      <li><a class="dropdown-item" href="#"><%= subcat.name %></a></li>
+      <% end %>
+    </ul>
+  </li>
+  <%end%>
+</ul>
+</div>

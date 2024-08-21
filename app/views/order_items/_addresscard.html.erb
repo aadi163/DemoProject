@@ -1,0 +1,20 @@
+<%= link_to "add new address", new_useraddress_path ,class:"btn btn-primary mb-2px"%>
+<% useraddresses.each do |add|%>
+<div class="card border-info mb-2 " style="max-width:45rem;">
+  <div class="card-header">
+  <p class="card-title">Name : <%=add.name%></p>
+    <p class="card-title">Contact No. : <%=add.phonenumber%></p>
+    <P class="card-title">Address : <%=add.address%> , <%=add.city%> , <%=add.state%></p>
+    <p class="card-text">pincode : <%=add.pincode%></p>
+  </div>
+  <div class=" ">
+    <%= link_to "edit", edit_useraddress_path(add) ,class:"btn btn-dange"%>
+    <%= link_to "Delete", useraddress_path(add), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+    },class:"btn btn-dange" %>
+    <button class="btn btn-success"> order-here </button>
+    <%= link_to "order here", orderitem_path(add , product), method: :post %>
+  </div>
+</div>
+<%end%>

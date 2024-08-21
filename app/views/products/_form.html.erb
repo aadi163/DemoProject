@@ -1,0 +1,35 @@
+<%= form_with model: product do |form| %>
+  <div class="row g-3 ">
+    <div class="col-md-6">
+      <div><%= form.label :name ,class:"form-label"%><br></div>
+      <div><%= form.text_field :name ,class:"form-control"%></div>
+    </div>
+    <div class="col-md-4">
+      <div><%= form.label :price ,class:"form-label"%><br></div>
+      <div><%= form.text_field :price ,class:"form-control"%></div>
+    </div>
+    <div class="col-md-4">
+      <div><%= form.label :category ,class:"form-label"%></div>
+      <div class="form-control">
+      <%= form.select :subcategory_id, Subcategory.order(:id).map {|sc| [sc.name , sc.id]}%>
+      </div>
+    </div> 
+    <div class="col-md-4">
+      <div><%= form.label :quantity ,class:"form-label"%></div>
+      <div><%= form.number_field :quantity ,class:"form-control"%></div>
+    </div>
+    <div class="col-md-4">
+      <div><%= form.label :description ,class:"form-label"%></div>
+      <div><%= form.text_field :description ,class:"form-control"%></div>
+    </div>
+    <div class="col-md-4">
+      <div><%= form.label :image ,class:"form-label"%></div>
+      <div><%= form.file_field :product_image ,class:"form-control"%></div>
+    </div>
+  <div>
+    <div class="col-12">
+      <div class="form-label"><%=form.submit class:"btn btn-primary"%></div>
+    </div>
+  </div>
+<% end %>
+

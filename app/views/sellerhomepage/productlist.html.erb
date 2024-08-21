@@ -1,0 +1,37 @@
+<%= render "sellernavbar" %>
+
+<h4 class="text-center mt-4 mb-4">Products List</h4>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Quantity</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <% @products.each do |p| %>
+    <tr>
+      <td >
+      <%= image_tag url_for(p.product_image) ,style: "width:50px; height:50px" if p.product_image.attached? %>
+      </td>
+      <td><%= p.name %></td>
+      <td><%= p.price %></td> 
+      <td><%= p.subcategory.name %></td>
+      <td><%= p.quantity %></td> 
+      <td><%= p.description %></td> 
+      <td><%= link_to "edit", edit_product_path(p) %>
+      <%= link_to "Delete", product_path(p), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+      },class:"btn btn-danger" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

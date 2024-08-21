@@ -1,0 +1,12 @@
+body {
+  background-color: rgb(201, 248, 232);
+  background-color: rgb(198, 203, 212);
+  color: black;
+  height: 20px;
+  width: 20px;
+  justify-content: space-around;
+  margin: 10px;
+  box-shadow: 10px 10px 10px 10px rgb(176, 176, 176);
+  position: sticky;
+  background-image: "https://images-eu.ssl-images-amazon.com/images/G/31/img21/MA2024/AugART/GW/ATF/Hero/Unrec/PC3k/4._CB566372889_.jpg";
+}
