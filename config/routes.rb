@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   #adminhome routes
   get 'adminhome' => "adminhomepage#index"
+  get '/homepage/:id/products' , to: 'homepage#products' , as: 'products'
   
   #category routes
   get 'categorylist' => "categories#categorylist"
