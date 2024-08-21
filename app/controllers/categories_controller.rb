@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :find_id , only: [:edit , :update , :destroy]
 
-  def categorylist
+  def index
     @categories = Category.all
   end
 
