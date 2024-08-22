@@ -4,7 +4,7 @@ class HomepageController < ApplicationController
     @products = Product.all
   end
 
-  def products
+  def filter_products
     @categories = Category.all
     subcategory = Subcategory.find(params[:id])
     @categoryProducts = subcategory.products.all

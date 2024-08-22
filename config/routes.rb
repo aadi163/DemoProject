@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   #userhome routes
   root 'homepage#index'
   get 'homepage' => "homepage#index"
+  get '/homepage/:id/filter_products' , to: 'homepage#filter_products' , as: 'filter_products'
 
   #sellerhome routes
   get 'sellerhome' => "sellerhomepage#index"
@@ -12,7 +13,6 @@ Rails.application.routes.draw do
 
   #adminhome routes
   get 'adminhome' => "adminhomepage#index"
-  get '/homepage/:id/products' , to: 'homepage#products' , as: 'products'
   
   #category routes
   get 'categorylist' => "categories#categorylist"

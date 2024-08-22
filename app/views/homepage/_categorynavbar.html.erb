@@ -5,7 +5,7 @@
     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: black;"><%= cat.name %></a>
     <ul class="dropdown-menu">
       <% cat.subcategories.each do |subcat| %>
-      <li><a class="dropdown-item" href="<%= products_path(subcat) %>"><%= subcat.name %></a></li>
+      <li><a class="dropdown-item" href="<%= filter_products_path(subcat) %>"><%= subcat.name %></a></li>
       <% end %>
     </ul>
   </li>
