@@ -1,5 +1,5 @@
 class SubcategoriesController < ApplicationController
-  before_action :find_id , only: [:edit , :update , :destroy]
+  before_action :find_subcategory , only: [:edit , :update , :destroy]
   
   def new
     @subcategory = Subcategory.new(params[:category_id])
@@ -38,7 +38,7 @@ class SubcategoriesController < ApplicationController
     params.require(:subcategory).permit(:name ,:category_id)
   end
 
-  def find_id
+  def find_subcategory
     @subcategory = Subcategory.find(params[:id])
   end
 end

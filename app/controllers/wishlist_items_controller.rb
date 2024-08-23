@@ -1,5 +1,5 @@
 class WishlistItemsController < ApplicationController
-  before_action :find_id  , only: [:addtowishlist]
+  before_action :find_product  , only: [:addtowishlist]
   before_action :authenticate_user! , only: [:addtowishlist]
 
 
@@ -23,7 +23,7 @@ class WishlistItemsController < ApplicationController
 
   private
 
-  def find_id
+  def find_product
     @product = Product.find(params[:id])
   end
 end

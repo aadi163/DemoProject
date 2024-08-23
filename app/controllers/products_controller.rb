@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_id , only: [:show , :edit , :update , :destroy]
+  before_action :find_product , only: [:show , :edit , :update , :destroy]
 
   def new
     @product = Product.new
@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :price, :subcategory_id , :description, :quantity ,:product_image)
   end
 
-  def find_id
+  def find_product
     @product = Product.find(params[:id])
   end
 end
