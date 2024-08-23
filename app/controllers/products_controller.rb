@@ -6,12 +6,13 @@ class ProductsController < ApplicationController
   end
 
   def show
-    # @product = Product.find(params[:id])
+    product_category = @product.subcategory.id 
+    @similar_products = Product.where(subcategory_id: product_category)
   end
 
   def create
-    @product = Product.new(product_params)
-    if @product.save    
+    product = Product.new(product_params)
+    if product.save    
       redirect_to sellerproductlist_path
     else
       render :new
@@ -19,11 +20,9 @@ class ProductsController < ApplicationController
   end
   
   def edit
-    # @product = Product.find(params[:id])
   end
 
   def update
-    # @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to sellerproductlist_path
     else
