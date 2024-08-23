@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   post '/cartdataitems/:id/addtocart/', to: 'cartdataitems#addtocart', as: 'addtocart'
   get 'cartindex' => "carts#index"
 
+  #address routes
+  post 'create_address' => "useraddresses#create_address"
+
   #order routes
   get  '/order_items/:id/finalorder' , to: 'order_items#finalorder' , as: 'finalorder'
   get  '/order_items/:id/selectaddress' , to: 'order_items#selectaddress' , as: 'selectaddress'
