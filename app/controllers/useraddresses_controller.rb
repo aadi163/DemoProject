@@ -27,7 +27,6 @@ before_action :find_address , only: [:edit , :update , :destroy]
     end
   end
 
-
   private
   
   def useraddress_params
