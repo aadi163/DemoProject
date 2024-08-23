@@ -8,16 +8,6 @@
       <div><%= form.label :phonenumber ,class:"form-label"%><br></div>
       <div><%= form.text_field :phonenumber ,class:"form-control"%></div>
     </div>
-    <%
-=begin%>
-<div class="col-md-4">
-      <div><%= form.label :category ,class:"form-label"%></div>
-      <div class="form-control">
-      <%= form.select :subcategory_id, Subcategory.order(:id).map {|sc| [sc.name , sc.id]}%>
-      </div>
-    </div>  
-<%
-=end%>
     <div class="col-md-4">
       <div><%= form.label :address ,class:"form-label"%></div>
       <div><%= form.text_field :address ,class:"form-control"%></div>
