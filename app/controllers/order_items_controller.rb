@@ -1,18 +1,16 @@
 class OrderItemsController < ApplicationController
   before_action :require_login , only: [:orderitem]
+  before_action :find_product , only: [:finalorder , :orderitem ]
   
   def finalorder
-    @product = Product.find(params[:id])
     @useraddresses = Useraddress.all
   end
 
   def orderitem
     order = current_user.order || current_user.create_order
     address = Useraddress.find(params[:address_id])
-    product = Product.find(params[:product_id])
-    @orderitem = order.order_items.new(product: product , useraddress: address)
-    
-    if @orderitem.save!
+    orderitem = order.order_items.new(product: @product , useraddress: address)
+    if orderitem.save!
       redirect_to orders_path
     else
       redirect_to product_path
@@ -20,8 +18,8 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy 
-    @orderitem = OrderItem.find(params[:id])
-    if @orderitem.destroy
+    orderitem = OrderItem.find(params[:id])
+    if orderitem.destroy
       redirect_to orders_path
     end
   end  
@@ -36,6 +34,10 @@ class OrderItemsController < ApplicationController
         redirect_to finalorder_path
       end
     end
+  end
+
+  def find_product
+    @product = Product.find(params[:id])
   end
 
 end

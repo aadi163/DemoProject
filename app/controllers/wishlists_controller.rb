@@ -1,5 +1,6 @@
 class WishlistsController < ApplicationController
   def index
-    @wishlistitems = WishlistItem.all
+    wishlist = Wishlist.where(user_id: current_user.id)
+    @wishlistitems = WishlistItem.where(wishlist_id: wishlist)
   end
 end

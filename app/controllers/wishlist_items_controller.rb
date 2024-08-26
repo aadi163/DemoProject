@@ -1,13 +1,13 @@
 class WishlistItemsController < ApplicationController
-  before_action :find_id  , only: [:addtowishlist]
+  before_action :find_product  , only: [:addtowishlist]
   before_action :authenticate_user! , only: [:addtowishlist]
 
 
   def addtowishlist
     wishlist = current_user.wishlist || current_user.create_wishlist
-    @wishlist_item = wishlist.wishlist_items.find_or_initialize_by(product: @product)
+    wishlist_item = wishlist.wishlist_items.find_or_initialize_by(product: @product)
 
-    if @wishlist_item.save
+    if wishlist_item.save
       redirect_to wishlists_path
     else
       redirect_to product_path
@@ -23,7 +23,7 @@ class WishlistItemsController < ApplicationController
 
   private
 
-  def find_id
+  def find_product
     @product = Product.find(params[:id])
   end
 end
