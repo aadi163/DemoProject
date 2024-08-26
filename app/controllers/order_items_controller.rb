@@ -37,7 +37,12 @@ class OrderItemsController < ApplicationController
   end
 
   def find_product
-    @product = Product.find(params[:id])
+    if params[:product_id].present?
+      @product = Product.find(params[:product_id])
+    else
+      @cart_items = Cartdataitem.where(cart_id: params[:cart_id])  
+      byebug
+    end
   end
 
 end
