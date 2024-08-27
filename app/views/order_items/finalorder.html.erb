@@ -15,7 +15,7 @@
 </div>
 
 <% else %>
-<div class="card border-info mt-5 shadow p-1 mb-5 bg-body-tertiary rounded" style="width: 22rem;">
+<div class="card border-info mt-5 shadow p-1 mb-5 bg-body-tertiary rounded" style="width: 40rem;">
 <% @cart_items.each do |itm|%>
 <div class="card mb-8" style="max-width: 700px; margin:20px">
   <div class="row g-0">
@@ -29,9 +29,6 @@
         <p class="card-text"><%= itm.product.description %></p>
       </div>
     </div>
-    <%= link_to "Remove", cartdataitem_path(itm), data: {
-                    turbo_method: :delete,
-            },class:"btn btn-dange" %>
   </div>
 </div>
 <%end%>
@@ -70,8 +67,7 @@
     <% if @product.present?%>
     <%= button_to "order-here", orderitem_path(product_id: @product.id, address_id: add),  method: :post ,class:"btn btn-success"%>
     <% else %>
-    <% cart_id = Cart.find_by(user_id: current_user.id)%>
-    <%= button_to "order-here", orderitem_path(product_id: cart_id, address_id: add),  method: :post ,class:"btn btn-success"%>
+    <%= button_to "order-here", orderitem_path(address_id: add),  method: :post ,class:"btn btn-success"%> 
     <%end%>
     </div>
   </div>

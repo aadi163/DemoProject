@@ -32,9 +32,8 @@
     <hr>
     <h4 class="card-text" style="float:left;">Total Amount : <%= @price + dc %> </h4>
     <div class="d-flex justify-content-end">
-    <button class="btn btn-primary " type="submit">Place Order</button>
-    <% cart_id = Cart.find_by(user_id: current_user.id)%>
-    <%= link_to "Place Order", finalorder_path(cart_id) %>
+    <% total_amount = @price + dc%>
+    <%= link_to "Place Order", finalorder_path(cartitems) ,class:"btn btn-primary" %>
     </div>
     <hr>
   </div>
