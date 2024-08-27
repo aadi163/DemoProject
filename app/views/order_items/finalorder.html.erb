@@ -16,6 +16,7 @@
 
 <% else %>
 <div class="card border-info mt-5 shadow p-1 mb-5 bg-body-tertiary rounded" style="width: 40rem;">
+<% @price = 0 %>
 <% @cart_items.each do |itm|%>
 <div class="card mb-8" style="max-width: 700px; margin:20px">
   <div class="row g-0">
@@ -31,7 +32,19 @@
     </div>
   </div>
 </div>
+<% @price = @price + itm.product.price %>
 <%end%>
+<div class="card text-bg-inf mb-3" style="max-width: 100rem; eight: 400px; margin:20px">
+  <h6 class="card-header">Price Details</h6>
+  <div class="card-body" style="">
+    <% dc = 120 %>
+    <h5 class="card-title">Total Price : <%= @price %> </>
+    <h5 class="card-title">Delevery Charges : <%= dc %> </h5>
+    <hr>
+    <h4 class="card-text" style="float:left;">Total Amount : <%= CartdataitemsController.new.total_amount(@price + dc) %> </h4>
+    <hr>
+  </div>
+</div>
 </div> 
 <%end%>
 

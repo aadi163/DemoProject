@@ -1,5 +1,9 @@
 class CartdataitemsController < ApplicationController
   before_action :require_login , only: [:addtocart]
+  
+  def total_amount(total_amount)
+    return total_amount
+  end
 
   def addtocart
     cart = current_user.cart || current_user.create_cart
@@ -26,4 +30,5 @@ class CartdataitemsController < ApplicationController
         redirect_to new_user_registration_path 
       end
     end
+
 end
