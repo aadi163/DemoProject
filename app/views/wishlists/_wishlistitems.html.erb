@@ -1,8 +1,9 @@
 
-<div class="row justify-content-center" style="float:left">
 <h3 class="text-center mt-4">Wishlist</h3>
+<div class="bg-light">
+<div class="row justify-content-center" style="float:left">
 <% wishlistitems.each do |itm|%>
-<div class="card mb-8" style="max-width: 600px; margin:20px">
+<div class="card mb-8 p-2" style="max-width: 600px; margin:20px">
   <div class="row g-0">
     <div class="col-md-4">
     <%= image_tag url_for(itm.product.product_image) ,style:"width:230px; height:200px; margin:0px 0px 0px 0px;", class:"img-fluid rounded-start" if itm.product.product_image.attached? %> 
@@ -22,5 +23,6 @@
             },class:"btn btn-dange" %>
 </div>
 <%end%>
+</div>
 </div>
 
