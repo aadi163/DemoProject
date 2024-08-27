@@ -1,15 +1,33 @@
 class OrderItemsController < ApplicationController
   before_action :require_login , only: [:orderitem]
-  before_action :find_product , only: [:finalorder , :orderitem ]
   
   def finalorder
+    if params[:product_id].present?
+      @product = Product.find(params[:product_id])
+    else
+      cart = Cart.where(user_id: current_user.id)
+      @cart_items = Cartdataitem.where(cart_id: cart)
+    end
     @useraddresses = Useraddress.all
   end
 
   def orderitem
     order = current_user.order || current_user.create_order
     address = Useraddress.find(params[:address_id])
-    orderitem = order.order_items.new(product: @product , useraddress: address)
+
+    if params[:product_id].present?
+      @product = Product.find(params[:product_id])
+      orderitem = order.order_items.new(product: @product , useraddress: address)
+    else
+      cart = Cart.where(user_id: current_user.id)
+      cart_items = Cartdataitem.where(cart_id: cart)
+      cart_items.each do |itm|
+        product = itm.product
+        orderitem = order.order_items.new(product: product , useraddress: address)
+        orderitem.save!
+      end
+    end
+
     if orderitem.save!
       redirect_to orders_path
     else
@@ -35,9 +53,4 @@ class OrderItemsController < ApplicationController
       end
     end
   end
-
-  def find_product
-    @product = Product.find(params[:id])
-  end
-
 end
