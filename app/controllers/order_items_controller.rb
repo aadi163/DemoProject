@@ -1,7 +1,7 @@
 class OrderItemsController < ApplicationController
-  before_action :require_login , only: [:orderitem]
+  before_action :require_login , only: [:order_item]
   
-  def finalorder
+  def final_order
     if params[:product_id].present? 
       @product = Product.find(params[:product_id])
     elsif WishlistItem.find_by(product_id: params[:id]).present?  
@@ -13,23 +13,23 @@ class OrderItemsController < ApplicationController
     @useraddresses = Useraddress.all
   end
 
-  def orderitem
+  def order_item
     order = current_user.order || current_user.create_order
     address = Useraddress.find(params[:address_id])
     if params[:product_id].present?
       @product = Product.find(params[:product_id])
-      orderitem = order.order_items.new(product: @product , useraddress: address)
+      order_item = order.order_items.new(product: @product , useraddress: address)
     else
       cart = Cart.where(user_id: current_user.id)
       cart_items = Cartdataitem.where(cart_id: cart)
       cart_items.each do |itm|
         product = itm.product
-        orderitem = order.order_items.new(product: product , useraddress: address)
-        orderitem.save!
+        order_item = order.order_items.new(product: product , useraddress: address)
+        order_item.save!
       end
     end
 
-    if orderitem.save!
+    if order_item.save!
       redirect_to orders_path
     else
       redirect_to product_path
@@ -37,8 +37,8 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy 
-    orderitem = OrderItem.find(params[:id])
-    if orderitem.destroy
+    order_item = OrderItem.find(params[:id])
+    if order_item.destroy
       redirect_to orders_path
     end
   end  
@@ -50,7 +50,7 @@ class OrderItemsController < ApplicationController
       redirect_to new_user_registration_path
 
       if user_signed_in?
-        redirect_to finalorder_path
+        redirect_to final_order_path
       end
     end
   end

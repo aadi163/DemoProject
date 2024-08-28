@@ -1,9 +1,9 @@
 class WishlistItemsController < ApplicationController
-  before_action :find_product  , only: [:addtowishlist]
-  before_action :authenticate_user! , only: [:addtowishlist]
+  before_action :find_product  , only: [:add_to_wishlist]
+  before_action :authenticate_user! , only: [:add_to_wishlist]
 
 
-  def addtowishlist
+  def add_to_wishlist
     wishlist = current_user.wishlist || current_user.create_wishlist
     wishlist_item = wishlist.wishlist_items.find_or_initialize_by(product: @product)
 

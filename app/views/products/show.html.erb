@@ -7,13 +7,13 @@
     <div class="col-md-4">
       <%= image_tag url_for(@product.product_image) ,style:"width:350px; height:400px; margin:10px 0px 10px 0px;", class:"img-fluid rounded-start" if @product.product_image.attached? %> 
       <span style="float:right; margin:0px 10px 10px 0px;">
-      <%= link_to "Buy now", finalorder_path(product_id: @product.id) , class:"btn btn-primary w-120" %>
+      <%= link_to "Buy now", final_order_path(product_id: @product.id) , class:"btn btn-primary w-120" %>
       </span>
       <span style="float:right; margin:0px 10px 10px 0px;">
-      <%= button_to "Add to cart", addtocart_path(@product) , class:"btn btn-outline-primary w-120", method: :post %>
+      <%= button_to "Add to cart", add_to_cart_path(@product) , class:"btn btn-outline-primary w-120", method: :post %>
       </span>
       <span style="float:left; margin:0px 10px 10px 0px;">
-      <%= button_to "Like", addtowishlist_path(@product) , class:"btn btn-outline-warning w-120", method: :post %>
+      <%= button_to "Like", add_to_wishlist_path(@product) , class:"btn btn-outline-warning w-120", method: :post %>
       </span>
     </div>
     <div class="col-md-8">

@@ -13,7 +13,6 @@
     <hr>
   </div>
 </div>
-
 <% else %>
 <div class="card border-info mt-5 shadow p-1 mb-5 bg-body-tertiary rounded" style="width: 40rem;">
 <% @price = 0 %>
@@ -47,7 +46,6 @@
 </div>
 </div> 
 <%end%>
-
 <div class="col-6">
 <div class="p-2">
 <p class="d-inline-flex gap-1">
@@ -78,9 +76,9 @@
     </div>
     <div class=" float-end">
     <% if @product.present?%>
-    <%= button_to "order-here", orderitem_path(product_id: @product.id, address_id: add),  method: :post ,class:"btn btn-success"%>
+    <%= button_to "order-here", order_item_path(product_id: @product.id, address_id: add),  method: :post ,class:"btn btn-success"%>
     <% else %>
-    <%= button_to "order-here", orderitem_path(address_id: add),  method: :post ,class:"btn btn-success"%> 
+    <%= button_to "order-here", order_item_path(address_id: add),  method: :post ,class:"btn btn-success"%> 
     <%end%>
     </div>
   </div>

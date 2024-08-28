@@ -1,15 +1,15 @@
 class CartdataitemsController < ApplicationController
-  before_action :require_login , only: [:addtocart]
+  before_action :require_login , only: [:add_to_cart]
   
   def total_amount(total_amount)
     return total_amount
   end
 
-  def addtocart
+  def add_to_cart
     cart = current_user.cart || current_user.create_cart
     product = Product.find(params[:id])
     cartitem = cart.cartdataitems.find_or_initialize_by(product: product)
-    
+
     if cartitem.save
       redirect_to carts_path
     else
