@@ -30,9 +30,8 @@
     <h5 class="card-title">Total Price : <%= @price %> </>
     <h5 class="card-title">Delevery Charges : <%= dc %> </h5>
     <hr>
-    <h4 class="card-text" style="float:left;">Total Amount : <%= @price + dc %> </h4>
+    <h4 class="card-text" style="float:left;">Total Amount : <%= CartdataitemsController.new.total_amount(@price + dc) %> </h4>
     <div class="d-flex justify-content-end">
-    <% total_amount = @price + dc%>
     <%= link_to "Place Order", finalorder_path(cartitems) ,class:"btn btn-primary" %>
     </div>
     <hr>

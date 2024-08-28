@@ -2,8 +2,10 @@ class OrderItemsController < ApplicationController
   before_action :require_login , only: [:orderitem]
   
   def finalorder
-    if params[:product_id].present?
+    if params[:product_id].present? 
       @product = Product.find(params[:product_id])
+    elsif WishlistItem.find_by(product_id: params[:id]).present?  
+      @product = Product.find(params[:id])
     else
       cart = Cart.where(user_id: current_user.id)
       @cart_items = Cartdataitem.where(cart_id: cart)
@@ -14,7 +16,6 @@ class OrderItemsController < ApplicationController
   def orderitem
     order = current_user.order || current_user.create_order
     address = Useraddress.find(params[:address_id])
-
     if params[:product_id].present?
       @product = Product.find(params[:product_id])
       orderitem = order.order_items.new(product: @product , useraddress: address)
