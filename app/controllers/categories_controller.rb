@@ -34,7 +34,6 @@ class CategoriesController < ApplicationController
     if @category.destroy
       redirect_to categorylist_path
     end
-
   end
 
   private

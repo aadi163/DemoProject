@@ -4,7 +4,7 @@ class OrderItemsController < ApplicationController
   def finalorder
     if params[:product_id].present? 
       @product = Product.find(params[:product_id])
-    elsif params[:id].present?  
+    elsif WishlistItem.find_by(product_id: params[:id]).present?  
       @product = Product.find(params[:id])
     else
       cart = Cart.where(user_id: current_user.id)
