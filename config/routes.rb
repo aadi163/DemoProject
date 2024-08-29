@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   #sellerhome routes
   get 'sellerhome' => "sellerhomepage#index"
-  get 'sellerproductlist' => "sellerhomepage#productlist"
+  get 'seller_product_list' => "sellerhomepage#product_list"
 
   #adminhome routes
   get 'adminhome' => "adminhomepage#index"
@@ -18,19 +18,19 @@ Rails.application.routes.draw do
   get 'categorylist' => "categories#categorylist"
 
   #carts routes
-  post '/cartdataitems/:id/addtocart/', to: 'cartdataitems#addtocart', as: 'addtocart'
+  post '/cartdataitems/:id/add_to_cart/', to: 'cartdataitems#add_to_cart', as: 'add_to_cart'
   get 'cartindex' => "carts#index"
 
   #address routes
   post 'create_address' => "useraddresses#create_address"
 
   #order routes
-  get  '/order_items/:id/finalorder' , to: 'order_items#finalorder' , as: 'finalorder'
+  get  '/order_items/:id/final_order' , to: 'order_items#final_order' , as: 'final_order'
   get  '/order_items/:id/selectaddress' , to: 'order_items#selectaddress' , as: 'selectaddress'
-  post '/order_items/:id/orderitem' , to: 'order_items#orderitem' , as: 'orderitem'
+  post '/order_items/:id/order_item' , to: 'order_items#order_item' , as: 'order_item'
 
   #wishlist routes
-  post '/wishlist_items/:id/addtowishlist' , to: 'wishlist_items#addtowishlist' , as: 'addtowishlist'
+  post '/wishlist_items/:id/add_to_wishlist' , to: 'wishlist_items#add_to_wishlist' , as: 'add_to_wishlist'
 
   
   resources :categories
@@ -45,11 +45,6 @@ Rails.application.routes.draw do
   resources :wishlists
 
   
-
-
-
-
-
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

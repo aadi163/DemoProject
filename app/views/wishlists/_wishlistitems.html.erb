@@ -13,7 +13,7 @@
         <h5 class="card-title"><%=itm.product.name%>: <%=itm.product.subcategory.name%></h5>
         <h6 class="card-title">Price : <%= itm.product.price %></h6>
         <p class="card-text"><%= itm.product.description %></p>
-        <%= link_to "Buy now", finalorder_path(itm.product_id) , class:"btn btn-primary w-50" %>
+        <%= link_to "Buy now", final_order_path(itm.product_id) , class:"btn btn-primary w-50" %>
       </div>
     </div>
   </div>

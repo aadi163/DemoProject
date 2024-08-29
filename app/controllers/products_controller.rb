@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
     if product.save    
-      redirect_to sellerproductlist_path
+      redirect_to seller_product_list_path
     else
       render :new
     end
@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to sellerproductlist_path
+      redirect_to seller_product_list_path
     else
       render :new
     end
@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
 
   def destroy
     if @product.destroy
-      redirect_to sellerproductlist_path
+      redirect_to seller_product_list_path
     end
   end
 

@@ -32,7 +32,7 @@
     <hr>
     <h4 class="card-text" style="float:left;">Total Amount : <%= CartdataitemsController.new.total_amount(@price + dc) %> </h4>
     <div class="d-flex justify-content-end">
-    <%= link_to "Place Order", finalorder_path(cartitems) ,class:"btn btn-primary" %>
+    <%= link_to "Place Order", final_order_path(cartitems) ,class:"btn btn-primary" %>
     </div>
     <hr>
   </div>
