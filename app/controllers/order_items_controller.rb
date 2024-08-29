@@ -30,8 +30,8 @@ class OrderItemsController < ApplicationController
     end
 
     if order_item.save!
+      OrderItemMailer.order_item_email(current_user).deliver_now
       redirect_to orders_path
-      OrderItemMailer.with(user: current_user , order_item: order_item).order_item_email.deliver_later
     else
       redirect_to product_path
     end

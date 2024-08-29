@@ -1,9 +1,8 @@
 class OrderItemMailer < ApplicationMailer
-  default from: "from@example.com"
+  default from: "adrathore@bestpeers.com"
 
-  def order_item_email
-    @user = params[:user]
-    @order_item = params[:order_item]
+  def order_item_email(current_user)
+    @user = current_user
     mail(to: @user.email, subject: 'Welcome to My Awesome Site')
   end
 end
