@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   #order routes
   get  '/order_items/:id/final_order' , to: 'order_items#final_order' , as: 'final_order'
   get  '/order_items/:id/selectaddress' , to: 'order_items#selectaddress' , as: 'selectaddress'
-  post '/order_items/:id/order_item' , to: 'order_items#order_item' , as: 'order_item'
+  post '/order_items/:id/add_to_order' , to: 'order_items#add_to_order' , as: 'add_to_order'
 
   #wishlist routes
   post '/wishlist_items/:id/add_to_wishlist' , to: 'wishlist_items#add_to_wishlist' , as: 'add_to_wishlist'

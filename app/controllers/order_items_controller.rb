@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  before_action :require_login , only: [:order_item]
+  before_action :require_login , only: [:add_to_order]
   
   def final_order
     if params[:product_id].present? 
@@ -13,7 +13,7 @@ class OrderItemsController < ApplicationController
     @useraddresses = Useraddress.all
   end
 
-  def order_item
+  def add_to_order
     order = current_user.order || current_user.create_order
     address = Useraddress.find(params[:address_id])
     if params[:product_id].present?
@@ -39,7 +39,7 @@ class OrderItemsController < ApplicationController
 
   def destroy 
     order_item = OrderItem.find(params[:id])
-    if order_item.destroy
+    if order_item.destroy!
       redirect_to orders_path
     end
   end  
