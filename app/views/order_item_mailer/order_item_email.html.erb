@@ -1,5 +1,16 @@
-<h1>OrderItem#order_item_email</h1>
-
-<p>
-  <%= @order_item %>, find me in app/views/order_item_mailer/order_item_email.html.erb
-</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to Flipzone, <%= @user.email %></h1>
+    <p>
+      Your order has been confirmed,
+    </p>
+    <p>
+      To login to the site, just follow this link: <%= @url %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

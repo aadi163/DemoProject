@@ -76,9 +76,9 @@
     </div>
     <div class=" float-end">
     <% if @product.present?%>
-    <%= button_to "order-here", order_item_path(product_id: @product.id, address_id: add),  method: :post ,class:"btn btn-success"%>
+    <%= button_to "order-here", add_to_order_path(product_id: @product.id, address_id: add),  method: :post ,class:"btn btn-success"%>
     <% else %>
-    <%= button_to "order-here", order_item_path(address_id: add),  method: :post ,class:"btn btn-success"%> 
+    <%= button_to "order-here", add_to_order_path(address_id: add),  method: :post ,class:"btn btn-success"%> 
     <%end%>
     </div>
   </div>

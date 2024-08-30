@@ -13,15 +13,15 @@
     </tr>
   </thead>
   <tbody>
-  <% @orders.each do |od|%>
+  <% @orders.each do |order|%>
     <tr>
       <td>
-        <%= image_tag url_for(od.product.product_image) ,style:"width:150px; height:150px; margin:0px 0px 0px 0px;", class:"img-fluid rounded-start" if od.product.product_image.attached? %>
+        <%= image_tag url_for(order.product.product_image) ,style:"width:150px; height:150px; margin:0px 0px 0px 0px;", class:"img-fluid rounded-start" if order.product.product_image.attached? %>
       </td>
-      <td><%=od.product.name%></td>
-      <td><%=od.product.price%></td>
-      <td><%=od.useraddress.address%> , <%=od.useraddress.city%> , <%=od.useraddress.state%></td>
-      <td><%= link_to "Cancel-Order", order_item_path(od), data: {
+      <td><%=order.product.name%></td>
+      <td><%=order.product.price%></td>
+      <td><%=order.useraddress.address%> , <%=order.useraddress.city%> , <%=order.useraddress.state%></td>
+      <td><%= link_to "Cancel-Order", order_item_path(order), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
             },class:"btn btn-danger" %></td>
