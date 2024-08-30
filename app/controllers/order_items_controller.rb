@@ -23,14 +23,14 @@ class OrderItemsController < ApplicationController
       cart = Cart.where(user_id: current_user.id)
       cart_items = Cartdataitem.where(cart_id: cart)
       cart_items.each do |itm|
-        product = itm.product
-        order_item = order.order_items.new(product: product , useraddress: address)
+        @product = itm.product
+        order_item = order.order_items.new(product: @product , useraddress: address)
         order_item.save!
       end
     end
 
     if order_item.save!
-      OrderItemMailer.order_item_email(current_user).deliver_now
+      OrderItemMailer.order_item_email(current_user , product: @product).deliver_now
       redirect_to orders_path
     else
       redirect_to product_path
