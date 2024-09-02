@@ -1,0 +1,29 @@
+<%= render "seller_navbar" %>
+
+<h4 class="text-center mt-4 mb-4">Order List</h4>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Address</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_items.each do |order| %>
+      <% if order.product.user_id == current_user.id%>
+      <tr>
+      <td>
+        <%= image_tag url_for(order.product.product_image) ,style:"width:150px; height:150px; margin:0px 0px 0px 0px;", class:"img-fluid rounded-start" if order.product.product_image.attached? %>
+      </td>
+      <td><%=order.product.name%></td>
+      <td><%=order.product.price%></td>
+      <td><%=order.useraddress.address%> , <%=order.useraddress.city%> , <%=order.useraddress.state%></td>
+      <td>delivered</td>
+      </tr>
+      <%end%>
+    <% end %>
+  </tbody>
+</table>

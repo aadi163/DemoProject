@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   has_one_attached :product_image
   belongs_to :subcategory
+  belongs_to :user
   
   has_many :cartdataitems , dependent: :destroy
   has_many :carts , :through => :cartdataitems

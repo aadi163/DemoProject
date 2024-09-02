@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   get '/homepage/:id/filter_products' , to: 'homepage#filter_products' , as: 'filter_products'
 
   #sellerhome routes
-  get 'sellerhome', to: "sellerhomepage#index" , as: 'sellerhome'
-  get 'seller_product_list' => "sellerhomepage#product_list"
+  get 'sellerhome', to: "seller_homepage#index" , as: 'sellerhome'
+  get 'seller_product_list' => "seller_homepage#product_list"
+  get 'seller_orders' => "seller_homepage#seller_orders"
 
   #adminhome routes
   get 'adminhome' => "adminhomepage#index"

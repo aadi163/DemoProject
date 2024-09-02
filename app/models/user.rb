@@ -10,4 +10,5 @@ class User < ApplicationRecord
   has_one :order
   has_one :wishlist
   has_many :addresses
+  has_many :products
 end
