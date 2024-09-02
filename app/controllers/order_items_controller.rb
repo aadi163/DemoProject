@@ -11,7 +11,7 @@ class OrderItemsController < ApplicationController
       cart = Cart.where(user_id: current_user.id)
       @cart_items = Cartdataitem.where(cart_id: cart)
     end
-    @useraddresses = Useraddress.all
+    @useraddresses = Useraddress.where(user_id: current_user)
   end
 
   def add_to_order
