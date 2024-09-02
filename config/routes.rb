@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
 
   #userhome routes
-  root 'homepage#index'
-  get 'homepage' => "homepage#index"
+  root to:'homepage#index'
+  get 'homepage', to: "homepage#index" , as: 'homepage'
   get '/homepage/:id/filter_products' , to: 'homepage#filter_products' , as: 'filter_products'
 
   #sellerhome routes
-  get 'sellerhome' => "sellerhomepage#index"
+  get 'sellerhome', to: "sellerhomepage#index" , as: 'sellerhome'
   get 'seller_product_list' => "sellerhomepage#product_list"
 
   #adminhome routes

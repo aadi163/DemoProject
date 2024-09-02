@@ -1,5 +1,6 @@
 class OrderItemsController < ApplicationController
-  before_action :require_login , only: [:add_to_order]
+  # before_action :require_login , only: [:add_to_order , :final_order]
+  before_action :authenticate_user! 
   
   def final_order
     if params[:product_id].present? 
@@ -49,7 +50,6 @@ class OrderItemsController < ApplicationController
   def require_login
     if !user_signed_in?
       redirect_to new_user_registration_path
-
       if user_signed_in?
         redirect_to final_order_path
       end
