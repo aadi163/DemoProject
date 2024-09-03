@@ -1,5 +1,6 @@
 class OrderItemsController < ApplicationController
-  before_action :require_login , only: [:add_to_order]
+  # before_action :require_login , only: [:add_to_order , :final_order]
+  before_action :authenticate_user! 
   
   def final_order
     if params[:product_id].present? 
@@ -10,7 +11,7 @@ class OrderItemsController < ApplicationController
       cart = Cart.where(user_id: current_user.id)
       @cart_items = Cartdataitem.where(cart_id: cart)
     end
-    @useraddresses = Useraddress.all
+    @useraddresses = Useraddress.where(user_id: current_user.id)
   end
 
   def add_to_order
@@ -22,15 +23,18 @@ class OrderItemsController < ApplicationController
     else
       cart = Cart.where(user_id: current_user.id)
       cart_items = Cartdataitem.where(cart_id: cart)
+      @cart_products = Array.new(cart_items.count)
+      @i=0
       cart_items.each do |itm|
-        @product = itm.product
-        order_item = order.order_items.new(product: @product , useraddress: address)
+        product = itm.product
+        @cart_products[@i] = product 
+        order_item = order.order_items.new(product: product , useraddress: address)
         order_item.save!
+        @i=@i+1
       end
     end
-
     if order_item.save!
-      OrderItemMailer.order_item_email(current_user , product: @product).deliver_now
+      OrderItemMailer.order_item_email(current_user , product: @cart_products || @product).deliver_now
       redirect_to orders_path
     else
       redirect_to product_path
@@ -49,7 +53,6 @@ class OrderItemsController < ApplicationController
   def require_login
     if !user_signed_in?
       redirect_to new_user_registration_path
-
       if user_signed_in?
         redirect_to final_order_path
       end

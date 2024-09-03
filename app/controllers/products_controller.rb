@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product , only: [:show , :edit , :update , :destroy]
-
+  # before_action :authenticate_user! 
   def new
     @product = Product.new
   end
@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
   private
   
   def product_params
-    params.require(:product).permit(:name, :price, :subcategory_id , :description, :quantity ,:product_image)
+    params.require(:product).permit(:name, :price, :subcategory_id , :description, :quantity ,:product_image , :user_id)
   end
 
   def find_product

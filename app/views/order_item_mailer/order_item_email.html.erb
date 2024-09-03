@@ -9,7 +9,11 @@
       Your order has been confirmed,
     </p>
     <p>
-      your order is  <%= @product %>.
+      your order is 
+      <% @product.each do |product| %>
+      <%= product %>
+      <hr>
+      <% end %>
     </p>
     <p>Thanks for joining and have a great day!</p>
   </body>

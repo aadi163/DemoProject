@@ -1,0 +1,42 @@
+<%= render "seller_navbar" %>
+
+<h4 class="text-center mt-4 mb-4">Item List</h4>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Gmail</th>
+      <th scope="col">product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Address</th>
+      <th scope="col">Set Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_items.each do |item| %>
+      <% if item.product.user_id == current_user.id%>
+      <tr>
+      <td>
+        <%= image_tag url_for(item.product.product_image) ,style:"width:150px; height:150px; margin:0px 0px 0px 0px;", class:"img-fluid rounded-start" if item.product.product_image.attached? %>
+      </td>
+      <td><%=item.useraddress.name%></td>
+      <td><%=item.order.user.email%></td>
+      <td><%=item.product.name%></td>
+      <td><%=item.product.price%></td>
+      <td>
+        <%=item.useraddress.address%> , <%=item.useraddress.city%> , <%=item.useraddress.state%> 
+        <br>
+        <span> Contact No. <%=item.useraddress.phonenumber%> </span>
+      </td>
+      <td>
+        <%= form_with(url: set_order_status_path , local: true , method: :post) do |form| %>
+        <%= form.select :order_status,[["Confirmed"], ["Awaiting pickup"], ["Shipped"], ["Order placed"], ["Returned"], ["Delivered"]] %>
+        <%= form.submit class:"btn btn-primary"%>
+        <% end %>
+      </td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
