@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post "set_product_status" => 'product_statuses#set_product_status'
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 

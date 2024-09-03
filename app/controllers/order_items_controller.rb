@@ -19,6 +19,7 @@ class OrderItemsController < ApplicationController
     address = Useraddress.find(params[:address_id])
     if params[:product_id].present?
       @product = Product.find(params[:product_id])
+      @product.create_product_status(status: "pending")
       order_item = order.order_items.new(product: @product , useraddress: address)
     else
       cart = Cart.where(user_id: current_user.id)
@@ -27,6 +28,7 @@ class OrderItemsController < ApplicationController
       @i=0
       cart_items.each do |itm|
         product = itm.product
+        product.create_product_status(status: "pending")
         @cart_products[@i] = product 
         order_item = order.order_items.new(product: product , useraddress: address)
         order_item.save!
