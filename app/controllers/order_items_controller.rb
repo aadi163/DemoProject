@@ -36,7 +36,7 @@ class OrderItemsController < ApplicationController
       end
     end
     if order_item.save!
-      OrderItemMailer.order_item_email(current_user , product: @cart_products || @product).deliver_now
+      OrderItemMailer.order_item_email(current_user , product: @cart_products || @product).deliver_later
       redirect_to orders_path
     else
       redirect_to product_path
