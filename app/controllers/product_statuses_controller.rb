@@ -1,12 +1,12 @@
 class ProductStatusesController < ApplicationController
   def set_product_status
-    status = ProductStatus.new(product_status_params)
-    status.save
+    status = ProductStatus.find_by(order_item_id: params[:id])
+    status.update(product_status_params)
   end
 
   private
 
   def product_status_params
-    params.permit(:product_id , :status)
+    params.permit(:status)
   end
 end

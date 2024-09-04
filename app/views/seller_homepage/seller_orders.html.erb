@@ -30,14 +30,11 @@
         <span> Contact No. <%=item.useraddress.phonenumber%> </span>
       </td>
       <td>
-        <% if item.product.product_status.present? %>
-          <%=item.product.product_status.status%>
-        <% else %>
-          Pending...  
+        <% if item.product_status.present? %>
+        Current Status <h5> <%=item.product_status.status%> </h5>
         <% end %>
-        <%= form_with(url: set_product_status_path , local: true , method: :post) do |form| %>
+        <%= form_with(url: set_product_status_path(item.id) , local: true , method: :post) do |form| %>
           <%= form.select :status , [["Confirmed"], ["Awaiting pickup"], ["Shipped"], ["Order placed"], ["Returned"], ["Delivered"]] %>
-          <%= form.hidden_field :product_id , value: item.product.id %>
           <%= form.submit class:"btn btn-primary"%>
         <% end %>
       </td>

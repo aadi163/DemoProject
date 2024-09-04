@@ -1,5 +1,4 @@
 class OrderItemsController < ApplicationController
-  # before_action :require_login , only: [:add_to_order , :final_order]
   before_action :authenticate_user! 
   
   def final_order
@@ -19,8 +18,9 @@ class OrderItemsController < ApplicationController
     address = Useraddress.find(params[:address_id])
     if params[:product_id].present?
       @product = Product.find(params[:product_id])
-      @product.create_product_status(status: "pending")
       order_item = order.order_items.new(product: @product , useraddress: address)
+      order_item.save
+      ProductStatus.create(order_item_id: order_item.id, status: "pending")
     else
       cart = Cart.where(user_id: current_user.id)
       cart_items = Cartdataitem.where(cart_id: cart)
@@ -28,10 +28,10 @@ class OrderItemsController < ApplicationController
       @i=0
       cart_items.each do |itm|
         product = itm.product
-        product.create_product_status(status: "pending")
         @cart_products[@i] = product 
         order_item = order.order_items.new(product: product , useraddress: address)
         order_item.save!
+        ProductStatus.create(order_item_id: order_item.id, status: "pending")
         @i=@i+1
       end
     end
@@ -49,15 +49,4 @@ class OrderItemsController < ApplicationController
       redirect_to orders_path
     end
   end  
-
-  private
-  
-  def require_login
-    if !user_signed_in?
-      redirect_to new_user_registration_path
-      if user_signed_in?
-        redirect_to final_order_path
-      end
-    end
-  end
 end
