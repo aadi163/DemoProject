@@ -25,7 +25,9 @@
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
             },class:"btn btn-danger" %></td>
-      <td>delivered</td>
+      <% if order.product_status.present? %>
+        <td><h6><%= order.product_status.status %></h6></td>
+      <% end %>
     </tr>
   <%end%>
   </tbody>

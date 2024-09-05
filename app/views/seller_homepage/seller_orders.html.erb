@@ -1,5 +1,4 @@
 <%= render "seller_navbar" %>
-
 <h4 class="text-center mt-4 mb-4">Item List</h4>
 <table class="table table-bordered">
   <thead>
@@ -30,9 +29,12 @@
         <span> Contact No. <%=item.useraddress.phonenumber%> </span>
       </td>
       <td>
-        <%= form_with(url: set_order_status_path , local: true , method: :post) do |form| %>
-        <%= form.select :order_status,[["Confirmed"], ["Awaiting pickup"], ["Shipped"], ["Order placed"], ["Returned"], ["Delivered"]] %>
-        <%= form.submit class:"btn btn-primary"%>
+        <% if item.product_status.present? %>
+          Current Status <h5> <%=item.product_status.status%> </h5>
+        <% end %>
+        <%= form_with(url: set_product_status_path(item.id) , local: true , method: :post) do |form| %>
+          <%= form.select :status , [["Confirmed"], ["Awaiting pickup"], ["Shipped"], ["Order placed"], ["Returned"], ["Delivered"]] %>
+          <%= form.submit class:"btn btn-primary"%>
         <% end %>
       </td>
       </tr>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   #userhome routes
@@ -11,6 +10,7 @@ Rails.application.routes.draw do
   get 'sellerhome', to: "seller_homepage#index" , as: 'sellerhome'
   get 'seller_product_list' => "seller_homepage#product_list"
   get 'seller_orders' => "seller_homepage#seller_orders"
+  post '/product_statuses/:id/set_product_status' , to: 'product_statuses#set_product_status' , as: 'set_product_status'
 
   #adminhome routes
   get 'adminhome' => "adminhomepage#index"
