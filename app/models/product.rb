@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  validates :name, :price , :product_image , presence: true
+  
   has_one_attached :product_image
   belongs_to :subcategory
   belongs_to :user
