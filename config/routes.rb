@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to:'homepage#index'
   get 'homepage', to: "homepage#index" , as: 'homepage'
   get '/homepage/:id/filter_products' , to: 'homepage#filter_products' , as: 'filter_products'
+  get 'search_products', to: "homepage#search_products" , as: 'search_products'
 
   #sellerhome routes
   get 'sellerhome', to: "seller_homepage#index" , as: 'sellerhome'

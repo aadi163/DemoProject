@@ -1,9 +1,5 @@
-  <div lass="position-fixed">
-  <%= render "navbar" %>
-  </div>
-  <div lass="position-sticky top-0">
-  <%= render "categorynavbar" , categories: @categories %>
-  </div>
+  <div><%= render "navbar" %></div>
+  <div><%= render "categorynavbar" , categories: @categories %></div>
   <%= render "carousal" %>
   <div><%= render "productcart" , products: @products%></div>
   <%= render "footer_carousal" %>

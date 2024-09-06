@@ -25,8 +25,9 @@
         <p>Bank Offer10% off up to ₹1,750 on ICICI Bank Credit Card EMI Transactions, on orders of ₹5,000 and aboveT&C</p>
         <p>Bank Offer10% off up to ₹1,000 on ICICI Bank Debit Card Transactions, on orders of ₹5,000 and aboveT&C</P>
         <p>Bank Offer12% off up to ₹1,800 on ICICI Bank Debit Card EMI Transactions, on orders of ₹7,000 and aboveT&C</p>
-        </div>
-        <div class="btn-group  p-2" role="group" aria-label="Basic radio toggle button group">
+      </div>
+      <% if @product.subcategory.category.name == "Fashion"%>
+      <div class="btn-group  p-2" role="group" aria-label="Basic radio toggle button group">
         <h3>Size :</h3>
         <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
         <label class="btn btn-outline-primary" for="btnradio1">M</label>
@@ -40,7 +41,7 @@
         <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
         <label class="btn btn-outline-primary" for="btnradio3">XXL</label>
       </div>
-      </div>
+      <% end %> 
     </div>
   </div>
 </div>

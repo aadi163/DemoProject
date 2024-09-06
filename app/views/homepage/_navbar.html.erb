@@ -1,4 +1,6 @@
-<div class="osition-fixed">
+<style>
+</style>      
+<div id="fixed-position">
 <nav class="navbar navbar-expand-lg bg-body-tertiary br-">
   <div class="container-fluid">
     <img src="https://w7.pngwing.com/pngs/8/373/png-transparent-shopping-bags-trolleys-shopping-cart-logo-online-shop-white-logo-shopping-centre-thumbnail.png" height="30px" width="40px">
@@ -35,20 +37,24 @@
           <a class="nav-link" href="<%=orders_path%>">Orders</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <div class="">
+        <%= form_with(url: search_products_path , method: :get) do |form| %>
+          <div class="d-flex" role="search">
+          <span class="me-2"><%= form.text_field :name , class:"form-control" %></span>
+          <span><%= form.submit "Search" , class:"btn btn-outline-success" %></span>
+          </div>
+        <% end %>
+      </div>
       <ul class="navbar-nav  mb- mb-lg-0 ">
       <% if !user_signed_in? %>
       <li class="nav-item" style="margin: 0px 6px 0px 5px">
       <%= link_to "Become a Seller",  sellerhome_path  ,class:"btn btn-dark" %>
       </li>
-      <li class="nav-item" style="margin-right: 50px">
+      <li class="nav-item" style="margin-right: 10px">
       <%= link_to "Sign Up", new_user_registration_path(role: "customer") ,class:"btn btn-success"%>
       </li>
       <% else user_signed_in? %>
-      <li class="nav-item" style="margin: 0px 50px 0px 5px ">
+      <li class="nav-item" style="margin: 0px 10px 0px 5px ">
       <%= button_to('Logout', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-success") %>
       </li>
       <%end%>
