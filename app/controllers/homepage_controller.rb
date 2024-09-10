@@ -11,8 +11,8 @@ class HomepageController < ApplicationController
   end 
 
   def search_products
-    if subcategory = Subcategory.find_by(name: params[:name]).present?
-      subcategory = Subcategory.find_by(name: params[:name])
+    subcategory = Subcategory.find_by(name: params[:name])
+    if subcategory.present?
       @categoryProducts = subcategory.products.all
     else
       redirect_to homepage_path

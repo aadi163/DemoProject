@@ -92,3 +92,7 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+  require 'simplecov'
+  # require 'simplecov-rcov'
+  SimpleCov.start 'rails' do
+  end
