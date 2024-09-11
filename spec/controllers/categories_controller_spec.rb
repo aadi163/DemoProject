@@ -38,8 +38,8 @@ RSpec.describe CategoriesController, type: :controller do
 
   describe "CATEGORY#update" do
     it "update category" do
-      # category_params = { category: { name: "Fashion" } }
-      post :update #params: category_params
+      category_params = { category: { name: "Fashion" } }
+      patch '/update' ,params: category_params
       expect(response).to redirect_to(categorylist_path)
       expect(Category.last.name).to eq("Fashion")
     end
