@@ -21,10 +21,17 @@
       <td><%=order.product.name%></td>
       <td><%=order.product.price%></td>
       <td><%=order.useraddress.address%> , <%=order.useraddress.city%> , <%=order.useraddress.state%></td>
+      <% if order.product_status.status == "Delivered" %>
+      <td><%= link_to "Return", order_item_path(order), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+            },class:"btn btn-success" %></td>
+      <% else %>
       <td><%= link_to "Cancel-Order", order_item_path(order), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
             },class:"btn btn-danger" %></td>
+      <% end %>
       <% if order.product_status.present? %>
         <td><h6><%= order.product_status.status %></h6></td>
       <% end %>
