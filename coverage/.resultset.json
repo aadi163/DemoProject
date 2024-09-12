@@ -83,7 +83,7 @@
         1,
         null,
         1,
-        1,
+        2,
         null,
         null,
         1,
@@ -144,7 +144,7 @@
       ],
       "/home/developer/DemoProject/app/models/product.rb": [
         1,
-        1,
+        null,
         null,
         1,
         1,
@@ -156,17 +156,17 @@
         1,
         1,
         null,
+        1,
+        1,
+        null
+      ],
+      "/home/developer/DemoProject/app/models/category.rb": [
         1,
         1,
         null
       ],
       "/home/developer/DemoProject/app/models/subcategory.rb": [
         1,
-        1,
-        1,
-        null
-      ],
-      "/home/developer/DemoProject/app/models/category.rb": [
         1,
         1,
         null
@@ -687,6 +687,6 @@
         0
       ]
     },
-    "timestamp": 1726061138
+    "timestamp": 1726143773
   }
 }
