@@ -3,6 +3,6 @@ class WishlistsController < ApplicationController
 
   def index
     wishlists = Wishlist.where(user_id: current_user.id)
-    @wishlist_items = WishlistItem.where(wishlist_id: wishlists)
+    @wishlist_items = WishlistItem.where(wishlist_id: wishlists.ids)
   end
 end

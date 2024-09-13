@@ -22,8 +22,8 @@ class OrderItemsController < ApplicationController
       order_item.save
       ProductStatus.create(order_item_id: order_item.id, status: "pending")
     else
-      cart = Cart.where(user_id: current_user.id)
-      cart_items = Cartdataitem.where(cart_id: cart)
+      carts = Cart.where(user_id: current_user.id)
+      cart_items = Cartdataitem.where(cart_id: carts.ids)
       @cart_products = Array.new(cart_items.count)
       @i=0
       cart_items.each do |itm|

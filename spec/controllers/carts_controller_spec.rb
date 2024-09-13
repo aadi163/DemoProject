@@ -12,7 +12,7 @@ require 'rails_helper'
 
 RSpec.describe CartsController, type: :controller do
   let(:user) { FactoryBot.create(:user) }
-  let(:cart) { FactoryBot.create(:cart, user: user) }
+  let(:cart) { FactoryBot.create(:cart, user_id: user.id) }
 
   describe "GET index" do
     it 'renders the index template' do
