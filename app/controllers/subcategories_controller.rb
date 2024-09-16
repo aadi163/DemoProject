@@ -6,8 +6,8 @@ class SubcategoriesController < ApplicationController
   end
 
   def create
-    @subcategory = Subcategory.new(subcategory_params)
-    if @subcategory.save
+    subcategory = Subcategory.new(subcategory_params)
+    if subcategory.save
       redirect_to categorylist_path
     else
       render :new

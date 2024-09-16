@@ -2,7 +2,7 @@ class SellerHomepageController < ApplicationController
   # before_action :authenticate_user! 
 
   def product_list
-    @products = Product.where(user_id: current_user)
+    @products = Product.where(user_id: current_user.id)
   end
 
   def seller_orders

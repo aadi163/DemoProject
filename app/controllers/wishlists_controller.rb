@@ -2,7 +2,7 @@ class WishlistsController < ApplicationController
   before_action :authenticate_user! 
 
   def index
-    wishlist = Wishlist.where(user_id: current_user.id)
-    @wishlistitems = WishlistItem.where(wishlist_id: wishlist)
+    wishlists = Wishlist.where(user_id: current_user.id)
+    @wishlist_items = WishlistItem.where(wishlist_id: wishlists.ids)
   end
 end

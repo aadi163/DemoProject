@@ -38,10 +38,10 @@ RSpec.describe CategoriesController, type: :controller do
 
   describe "CATEGORY#update" do
     it "update category" do
-      category_params = { category: { name: "Fashion" } }
-      patch '/update' ,params: category_params
-      expect(response).to redirect_to(categorylist_path)
-      expect(Category.last.name).to eq("Fashion")
+      category = FactoryBot.create(:category , name: "new cloths")
+      process :update, method: :patch, params: { id: category.id , category: {name: "Cloths"} }
+      expect(response).to redirect_to(categorylist_path)  
+      expect(Category.last.name).to eq("Cloths")
     end
   end
 

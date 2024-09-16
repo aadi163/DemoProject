@@ -31,8 +31,7 @@ RSpec.describe SubcategoriesController, type: :controller do
 
   describe "CATEGORY#update" do
     it "update subcategory" do
-      subcategory_params = { subcategory: { name: "kids wear" , category_id: category.id} }
-      patch :update , params: subcategory_params
+      process :update, method: :patch, params: { id: subcategory.id , subcategory: {name: "kids wear"} }
       expect(Subcategory.last.name).to eq("kids wear")
       expect(response).to redirect_to(categorylist_path)
     end
