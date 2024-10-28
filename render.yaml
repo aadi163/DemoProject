@@ -1,6 +1,6 @@
 databases:
   - name: flipzone
-    databaseName: flipzone
+    databaseName: demo_project_development
     user: flipzone
     plan: free
 
